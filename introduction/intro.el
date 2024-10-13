@@ -28,3 +28,34 @@ nil
 
 
 
+(count-loop)
+
+
+;; Some nomenclature:
+;; - Functions -> The one we know already
+;; - Command -> Functions thay may be called interactively
+;; - Macros -> Process their arguments differently from functions (arguments are not evaluated)
+
+
+;; Variable is a name bound to an object, which we call value. Although nearly
+;; all variables can be set by the user, there are certain variables that are meant
+;; to be changed by them. These type of variables are called user options
+
+
+;; Some informative functions
+
+; Returns a string describing the version of emacs that is running.
+; It is useful to include this string in bug reports
+(emacs-version)
+
+; If call with a non-nill value, it inserts the text in the buffer before point and returns nil
+(emacs-version t)
+
+; Variable: Output style in current-time or nil if no info available
+emacs-build-time
+
+; Variable: String such as 29.1. If the value returned is
+; a three numeric components, the vesrsion is an unreleased test version
+emacs-version
+
+emacs-build-number ; Variable: Number of times this emacs was built
