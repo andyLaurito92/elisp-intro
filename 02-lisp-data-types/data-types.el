@@ -191,3 +191,46 @@ nil        ; The element, and its CDR slot refers to the next cons cell of the l
 ;;   |            |            |
 ;;   |            |            |
 ;;    --> rose     --> violet   --> buttercup
+;; rose, violet and buttercup are atoms
+
+;; Another way of representing this would be
+;;  ---------------       ----------------       -------------------
+;; | car   | cdr   |     | car    | cdr   |     | car       | cdr   |
+;; | rose  |   o-------->| violet |   o-------->| buttercup |  nil  |
+;; |       |       |     |        |       |     |           |       |
+;;  ---------------       ----------------       -------------------
+
+
+
+;;; DOTTED PAIR NOTATION
+
+;;; General syntax for cons cells that represents the CAR and CDR explicitly.
+;;; In the syntax, (a . b) stands for a cons cell whose CAR is the object a
+;;; and whose CDR is the object b
+
+(setq myconscell '(1 . 3))
+(consp myconscell)
+
+
+;;; Note: The list (rose violet) is equivalent to (rose . (violet))
+
+
+;;; ASSOCIATION LIST TYPES = DICTIONARIES
+(setq alist-of-colors '((rose . red) (lily . white) (buttercup . yellow)))
+
+;;; ARRAY TYPE
+
+;;; Composed of an arbitrary number of slots for holding or referering to other Lisp objects
+;;; Array is indexed while lists are not --> Accessing an element of a list is O(N)
+
+;;; 4 types of arrays: 1) Strings, 2) Vectors, 3) bool-vectors and 4) char-tables
+;;; Char-tables are sparse arrays indexed by any valid character code
+
+;;; Strings are array of characters. Strings are constants
+
+
+"foo \^Ibar" ; A tab character embedded withing a string
+
+
+"My string has
+new lines in it"
