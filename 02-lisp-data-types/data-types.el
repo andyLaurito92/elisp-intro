@@ -169,3 +169,25 @@ most-negative-fixnum
 
 
 ;;; ConsCell[CAR val1, CDR ConsCell[CAR val2, CDR ConsCell[CAR val3, nil]]] <---Representation of---> val1 -> val2 -> val3
+
+;;; A Lisp list works as a linked list built up of cons cells
+
+;;; Objects that are not cons cells are called ATOMS
+
+'(A 2 "A") ; Upon reading, each object inside the parentheses become an element of the list.
+'()	   ; That is, a cons cell is made for each element. The CAR slot of the cons cell holds
+nil        ; The element, and its CDR slot refers to the next cons cell of the list, which holds the next element
+'("A ()")  ; in the list
+
+;;; The names CAR and CDR derive from the history of Lisp. Those names were instructions in the IBM 704 computer 
+
+'(rose violet buttercup)
+
+;; Representatino of the above list can be seen below
+
+;;  --- ---      --- ---      --- ---
+;; |   |   |--> |   |   |--> |   |   |--> nil
+;;  --- ---      --- ---      --- ---
+;;   |            |            |
+;;   |            |            |
+;;    --> rose     --> violet   --> buttercup
