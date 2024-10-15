@@ -113,3 +113,59 @@ most-negative-fixnum
 
 ;;; For unicode caracters just use ?\N{NAME}
 ?\N{LATIN SMALL LETTER A WITH GRAVE} ; equivalent to ?a, Unicode character U+00E0 
+
+;;; CONTROL CHARACTERS
+
+?\C-i ; Control-character syntax equivalent to Ctrl + i
+?\^I ; Equivalent to above
+
+;;; Only control characters allowed are those that exist in ASCII
+
+
+;;; META CHARACTERS
+
+?\M-A ; Meta + A
+
+
+
+;;; SYMBOL
+;;; A symbol is an object with a name. The symbol name serves as the printed representation
+;;; of the symbol
+
+;;; A symbol can serve as a variable, as a function name, or to hold a property list.
+;;; A symbol whose name starts with : is called a keyword symbol
+
+(setq asymbol 'foo)
+(symbolp asymbol)
+
+
+
+;;; SEQUENCE TYPES
+
+;;; Sequence = ordered set of elements
+;;; 2 types --> 1) Lists and 2) Arrays
+
+
+;;; Lists --> Can hold elements of any type, and its length can be easily changed by adding
+;;; or removing elements (pretty much like in Python)
+
+;;; Arrays -> Fixed-length sequences (again, pretty much like Python). They are subdivided into
+;;; strings, vectors, char-tables and bool-vectors
+
+;;; Vectors --> can hold elements of any type, whereas string elements must be characters and
+;;; bool-vector elements must be t or nil
+;;; Char-tables are like vectors, except that they are indexed by any valid character code
+
+;;; It is generally impossible to read the same sequence twice, since sequences are always created
+;;; anew upon reading <---- WUT?
+
+;;; CONS cell and List types
+;;; cons cell is an object that consists of two slots --> car slot and cdr slot (Like a tuple)
+;;; Each slot can hold any Lisp object
+
+;;; A list is a series of cons cells, linked together so that the CDR slot of each cons cell holds
+;;; either the next cons cell or the empty list. Most con cells are used as parts of lists, we
+;;; refer to any structure made out of cons cells as a list structure
+
+
+;;; ConsCell[CAR val1, CDR ConsCell[CAR val2, CDR ConsCell[CAR val3, nil]]] <---Representation of---> val1 -> val2 -> val3
