@@ -311,3 +311,21 @@ new lines in it"
 (gethash "aa" my-hash)
 (hash-table-count my-hash)
 		 
+
+;;; FUNCTION TYPE
+
+;;; Lisp functions are objects. A non-compiled function in Lisp is a lambda expression
+;;; This is: a list whose first element is the symbol lambda
+
+;;; In lisp, a function has no intrinsic name. A lambda expression can be called as a
+;;; function even though it has no name; to emphasize this, we also call it an anonymous
+;;; function. A named function in Lisp is just a symbol with a valid function in its
+;;; function cell
+
+(setq times2
+      (lambda x "This is a test" x * 2))
+
+(functionp times2)
+;;; You can construct or obtain a function object at run time and then call it with the
+;;; primitive functions funcall and apply
+(funcall times2 3)
