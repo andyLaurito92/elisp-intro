@@ -234,3 +234,80 @@ nil        ; The element, and its CDR slot refers to the next cons cell of the l
 
 "My string has
 new lines in it"
+
+
+;;; Non-ASCII Characters in Strings ---> What about UNICODE? Doesn't seem that elisp treats strings as the unicode sandwich
+;;, See https://github.com/andyLaurito92/fluent-python/blob/3a0d754eeff4ea0aefec792c72b21bfb4588edf8/chapter04-unicode-text-vs-bytes/unicode-vs-bytes.py#L10
+;;; to remember about this concept :)
+
+;;; 2 texts representations -> Multibyte & unibyte
+;;; Unibyte -> store raw bytes, value between 0 and 255
+;;; Multibyte -> store human-readable text. Values between 0 to 4194303
+;;; Characters above 127 are non-ASCII
+
+
+;;; Unicode characters are automatically treated as multibytes
+
+;;; TEXT PROPERTIES IN STRINGS
+
+;;; A string can hold properties for the characters it contains.
+
+;;; #("characters" property-data...)
+;;; Example
+
+;;; #("foo bar" 0 3 (face bold) 3 4 nil 4 7 (face italic))
+
+;;; Represents a string whose textual contents are 'foo bar',
+;;; in which the first three characters have a face property
+;;; with value bold, and the last three have a face property
+;;; with value italic (The fourth character has no text
+;;; properties, so its property list is nil)
+
+
+;;; VECTOR TYPE
+;;; Vector = one-dimensional array of elements of any type
+;;; O(1) to access elements
+(vectorp '[1 2 3])
+
+;;; CHAR-TABLE type
+;;; One dimensional array of elements of any type,
+;;; indexed by character codes.
+(make-char-table 'test [1])
+
+;;; BOOL-VECTOR TYPE
+
+;;; One dimensional array whose elements must be t or nil
+;;; First argument is the length and second is the default value
+;;; for each elements
+
+(setq test (make-bool-vector 3 t)) ; Result -> #&3"^G" bc C-g is 111 (3 trues) 111 = 1 + 2 + 4 = 7
+(bool-vector t nil t); Result -> #&3"^E" -> 69 --> 1000101
+
+?\C-g
+?\^G
+?E ; 
+
+
+;;; Printed representation is a string, except that it begins with
+;;; #& followed by the length. The string constant that follows
+;;; specifies the contents of the bool vector as a bitmap - each
+;;; character in the string contains 8 bits, which specify the
+;;; next 8 elements of the bool vector. The least significant
+;;; bits of the character correspond to the lowest indices in
+;;; the bool vector
+
+
+;;; HASH-TABLE (alias dictionaries)
+
+(setq testing-hash
+      (make-hash-table :test 'equal))
+
+(puthash 'aa 9 testing-hash)
+(gethash 'aa testing-hash)
+
+(setq my-hash
+      #s(hash-table size 30 test equal data ("aa" 3 "bb" 9)))
+
+(gethash "aa" my-hash)
+(hash-table-count my-hash)
+		 
