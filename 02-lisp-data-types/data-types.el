@@ -323,9 +323,46 @@ new lines in it"
 ;;; function cell
 
 (setq times2
-      (lambda x "This is a test" x * 2))
+      (lambda (x)
+	(* x 2))
+      )
 
 (functionp times2)
 ;;; You can construct or obtain a function object at run time and then call it with the
 ;;; primitive functions funcall and apply
 (funcall times2 3)
+
+
+;;; MACRO TYPE
+
+;;; A Lisp macro is a user-defined construct that extends the Lisp language. It is represented
+;;; as an object much like a function, but with different argument-passing semantics. A Lisp
+;;; macro has the form of a list whose first element is the symbol macro and whose CDR is a
+;;; Lisp function object, including the lambda symbol
+
+;;; Lisp macro are usually defined with the built-in defmacro macro, but any list that begins
+;;; with macro is a macro as far as Emacs is concerned
+;;; LISP MACROS != KEYBOARD MACROS
+
+;;; To talk more about this later :)
+
+
+;;; PRIMITIVE FUNCTION TYPE
+
+;;; Function defined in C, also called subrs (subroutines) or built-in functions
+;;; Most primitive functions evaluate all their arguments when they are called.
+;;; When a primitife function doesn't evaluate all its arguments, it's called a special form
+
+;;; Redefinition of built-in functions is discouraged bc Lisp functions might call the new
+;;; re-defined function, but other pre-compiled functions will probably call the original
+;;; primitive function (this is pretty much like in Python)
+
+(symbol-function 'car) ; Acess the function cell of the symbol
+
+(subrp (symbol-function 'car)) ; Is this a primitive function?
+
+;;; BYTE-CODE FUNCTION TYPE
+
+;;; Byte-code function objects are produced by byte-compiling Lisp code. Internally, a byte
+;;; code function object is much like a vector; however, the evaluator handles this data type
+;;; specially when it appears in a function call.
