@@ -366,3 +366,45 @@ new lines in it"
 ;;; Byte-code function objects are produced by byte-compiling Lisp code. Internally, a byte
 ;;; code function object is much like a vector; however, the evaluator handles this data type
 ;;; specially when it appears in a function call.
+
+
+;;; Record type
+;;; A record is much like a vector, however the first element is used to hold its type as
+;;; returned by type-of
+
+(type-of times2)
+
+;;; TYPE DESCRIPTOR
+
+;;; Is a record which holds information about a type. Slot 1 in the record
+;;; must be a symbo naming the type
+
+;;; Example: cl-structure-class
+
+;;; AUTOLOAD TYPE
+
+;;; Is a list whose first element is the symbol autoload. It is stored as the function
+;;; definition of a symbol, where it serves as a placeholder for the real definition
+;;; The autoload object says that the real definition is found in a file of Lisp code
+;;; that should be loaded when necessary. It contains the name of the file, plus some
+;;; other information about the real definition
+
+
+;;; Finalizer Type
+
+;;; A finalizer object helps Lisp code clean up after objects that are no longer needed.
+;;; A finalizer holds a Lisp function object. When a finalizer object becomes unreachable
+;;; after a garbage collection pass, Emacs calls the finalizer's associated function object
+;;; When deciding wether a finalizer is reachable, Emacs does not count references from
+;;; finalizer object themselves, allowing you to use finalizers without having to worry about
+;;; aciddentaly capturing references to finalized objects themselves
+
+;;; Emacs runs a given finalizer object's exactly once
+
+;;; (make-finalizer function)
+
+
+;;; Editing types --> Types uniques to the context of EMACS
+
+;;; Buffer Type
+
