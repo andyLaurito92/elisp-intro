@@ -408,3 +408,26 @@ new lines in it"
 
 ;;; Buffer Type
 
+;;; Buffer -> object that contains text that can be edited.
+;;; Most buffers hold the contents of a disk file
+;;; A buffer doesn't need to be displayed in a window!
+
+;;; Each buffer has a designated position called point; Most editing commands act on the contents of the current buffer
+;;; in the neighborhood of point
+
+;;; The content of a buffer are much like a string, but buffers are not used like strings in elisp.
+;;; For example: You can insert text efficiently into an existing buffer, altering the buffer's contents,
+;;; whereas inserting text into a string requires concatenating substrings and the result is an entirely new string object
+
+;;; Personal note --> Buffers sound pretty muck like StringBuilders of Java (with the exception of the point attribute)
+;;; It's a super interesting abstraction that it's used a lot
+
+;;; Several other data structures are associated with each buffer:
+;;; Local syntax tables, local keymaps, list of buffer-local variable bindings,
+;;; overlays and text properties for the text in the buffer
+
+;;; Local keymap and variable list contain entries that individually override global bindings of values.
+;;; These are used to customize the behaviour of programs in different buffers, without actually changing
+;;; the programs.
+
+;;; A buffer may be indirect: It shares text of another buffer, but presents it differently
