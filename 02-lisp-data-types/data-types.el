@@ -503,3 +503,35 @@ new lines in it"
 
 (all-threads)
 
+
+;;; Mutex type
+
+(setq testing (make-mutex "testing-mutex"))
+(mutexp testing)
+
+;;; Condition Variable Type
+
+;;; A condition variable is a device for a more complex thread syncrhonization
+;;; than a mutex.
+;;; A thread can wait on a condition variable, to be woken up when some other thread
+;;; notifies the condiiton
+
+(make-condition-variable testing)
+
+
+;;; Stream type
+
+;;; Object that can be used as a source or sink for characters
+;;; Many different types can be used this way: markers, buffers, strings, and functions
+
+;;; Keymap Type
+
+;;; A keymap maps keys typed by the user to commands
+;;; A keymap is a list whose CAR is the symbol keymap
+
+
+;;; Overlay type
+
+;;; Overlay specifies properties that apply to a part of a buffer
+
+(overlay-lists)
