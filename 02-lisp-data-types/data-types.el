@@ -640,3 +640,12 @@ new lines in it"
 ;;; Note: 2 buffers are nevered equal, even if their textual contents are the same
 
 ;;, For equal, equality is defined recursively
+
+
+;;; Mutability example
+
+(let*
+    ((x (list 0.5))
+     (y (eval (list 'quote x))))
+  (setcar x 1.5) ;; The program should not do this.
+y)
