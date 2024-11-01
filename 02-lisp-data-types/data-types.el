@@ -431,3 +431,75 @@ new lines in it"
 ;;; the programs.
 
 ;;; A buffer may be indirect: It shares text of another buffer, but presents it differently
+
+(current-buffer)
+
+
+;;; Marker Type
+
+;;; Marker denotes a position in a specific buffer. Marker has 2 components:
+;;; 1) The buffer, 2) The posiiton
+
+;;; Changes in the buffer's text automatically relocate the position value as necessary
+;;; to ensure that the marker always points between the same 2 characters in the buffer
+
+(point-marker)
+
+
+;;; Window Type
+
+;;; Portion of the screen that emacs uses to display buffers. Every live window has
+;;; an associated buffer
+;;; On contrast, a buffer can appear in 0, 1 or multiple windows
+;;; Windows are grouped on the screen into frames; Each window belongs to 1 and only 1 frame
+
+;;; There might be multiple windows, but only 1 is the selected window (window where cursor is)
+
+(selected-window)
+
+
+;;; Frame type
+
+;;; Frame is the screen area that contains 1 or more emacs windows
+
+(selected-frame)
+
+;;; Terminal type -> device capable of displaying 1 or more emacs frames
+(get-device-terminal nil)
+
+;;; Window configuration type
+
+;;; Stores information about the positions, sizes, and contents of the windows
+;;; in a frame, so you can recreate the same arrangement of windows later
+
+(current-window-configuration)
+
+;;; Frame configuration type
+
+;;; Stores information about the positions, sizes, and contents of the windows
+;;; in ALL frames. This is a list whose CAR is frame-configuration and whose CDR
+;;; is an alist. Each alist element describes one frame, which appears as the CAR
+;;; of that element
+
+
+;;; Process Type
+
+;;; A process is a Lisp object that designates a subprocess created by the EMACS process.
+;;; Programs such as shells, GDB, ftp, and compilers run in an Emacs subprocess created by
+;;; the Emacs process.
+
+;;; An Emacs subprocess takes textual input from Emacs and returns textual output to Emacs
+;;; for further manipulation. Emacs can also send signals to the subprocess
+
+(process-list)
+
+
+;;; Thread Type
+
+;;; A thread in Emacs represents a separate thread of Emacs Lisp execution.
+;;; It runs its own Lisp program, has its own current buffer and can have
+;;; subprocesses locked to it, this is, subprocesses whose output only this thread
+;;; can accept.
+
+(all-threads)
+
