@@ -611,3 +611,32 @@ new lines in it"
 (add-on 'a)
 (add-on '(1 2))
 (add-on 3)
+
+;;; To know the type of an object, use type-of
+;;; Note: The value is one of the symbols bool-vector, buffer, char-table, compiled-function,
+;;; condition-variable, cons, finalizer, float, font-entity, font-object,
+;;; font-spec, frame, hash-table, integer, marker, mutex, overlay, process,
+;;; string, subr, symbol, thread, vector, window, or window-configuration.
+
+(type-of 3)
+(type-of ())
+(type-of 'a)
+
+
+;;; Equality predicates
+
+;;; eq --> tests if 2 objects are the same lisp object
+;;; equal --> tests if 2 objects have equal components
+
+
+(eq "abc" "abc")
+(equal "abc" "abc")
+
+;;; Comparisson between strings is canse sensitive, but does not take into account
+;;; the text properties, it compares only the characters in the strings
+;;; In case you want to compare properties, use equal-including-properties
+
+
+;;; Note: 2 buffers are nevered equal, even if their textual contents are the same
+
+;;, For equal, equality is defined recursively
