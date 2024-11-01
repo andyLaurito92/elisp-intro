@@ -574,3 +574,40 @@ new lines in it"
 
 ;;; Didn't work as I expect :) --> To review
 (car (car circular-list))
+
+
+;;; Type predicates
+
+;;; Emacs lisp doesn't perform type checking on the arguments passed to a function
+;;; It could not do so, since function arguments in Lisp do not have declared types
+;;; It is therefore up to the individual function to test wether each actual argument
+;;; belongs to a type that the function can use
+
+
+;;; All built-in functions do check the types of their actual arguments
+
+;;; Most common way to check the type of an object is to call a type predicate function.
+;;; Emacs has a type predicate for each type, as well as some predicates for combinations
+;;; of types ---> Duck typing
+
+;;; A type predicate function takes one argument; It returns t if the argument belongs to
+;;; the appropriate type, and nil otherwise
+;;; Example of usage:
+
+(setq list '())
+(defun add-on (x)
+  (cond ((symbolp x)
+	 ;; If X is a symbol, put it on LIST
+	 (setq list (cons x list)))
+	((listp x)
+	 ;; If X is a list, add its elements to LIST
+	 (setq list (append x list)))
+	(t
+	 ;; Throw invalid argument if neither symbol nor list
+	 (error "Invalid argument %s in add-on" x))
+   )
+  )
+
+(add-on 'a)
+(add-on '(1 2))
+(add-on 3)
