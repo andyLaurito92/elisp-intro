@@ -532,6 +532,45 @@ new lines in it"
 
 ;;; Overlay type
 
-;;; Overlay specifies properties that apply to a part of a buffer
+;;; Overlay specifies properties that apply to a part of a buffer usually temporarily
+;;; in a different display style.
 
 (overlay-lists)
+
+
+;;; Font type
+
+;;; 3 Types: 1) Font objects, 2) Font specs & 3) Font entities
+
+
+;;; Read syntax for circular objects (Syntax for referentiating a lisp object)
+
+;;; To represent shared or circular structures within a complex of Lisp objects, you
+;;; can use the reader constructs '#n=' and '#n#'
+
+;;; Use '#n=' before an object to label it for later reference. Subsequently you can
+;;; use #n# to refer the same object in another place.
+
+;;; Example:
+
+(setq x '(#1=(a) b #1#)) ; This equality is at object level, is not the equal equality
+
+(eq
+ (nth 0 x)
+ (nth 2 x)) ; True, elements refer to the same lisp object
+
+(setq y '((a) b (a)))
+
+(eq
+ (nth 0 y)
+ (nth 2 y)) ; Not equal, they are different lisp objects
+
+
+;;; You can also create circular structures like this:
+
+(setq circular-list
+      '(#1=(a #1#))
+      )
+
+;;; Didn't work as I expect :) --> To review
+(car (car circular-list))
