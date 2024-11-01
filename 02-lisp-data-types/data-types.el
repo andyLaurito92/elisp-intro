@@ -644,6 +644,13 @@ new lines in it"
 
 ;;; Mutability example
 
+;;; let* binds the variables sequentially, so that each
+;;; can depend on the values bound to those that are bound
+;;; before it
+
+;;; In contrast, let doesn't impose this sequential binding, meaning
+;;; that bounds can happen in a different order to which is written
+
 (let*
     ((x (list 0.5))
      (y (eval (list 'quote x))))
