@@ -44,3 +44,48 @@
 split-string-default-separators
 
 (split-string "Something to test this function" " ")
+
+;; You can use a regex as well
+(split-string "Something to test this function" "[ht]i")
+
+
+(string-clean-whitespace "  let's clean this    string    !    ")
+(string-trim-left "  let's clean this    string    !    ")
+(string-trim-right "  let's clean this    string    !    ")
+
+
+;;; Modifying strings
+
+(setq a-testing-string "this is my string")
+(aset a-testing-string 3 ?x)
+(print a-testing-string)
+
+;; string= returns t if the cahracters of the two strings match exactly
+;; This function equals string-equal
+(string= "a string" "a string")
+
+;; string< returns t if the first string is greater, otherwise return nil.
+;; Keep in mind that lower case letters have higher numeric value in the ASCII
+;; character set than their upper case counterparts
+;; digits and many punctuation characters have a lower
+;; numeric value than upper case letters. An ASCII character is less than any non-ASCII
+;; character; a unibyte non-ASCII character is always less than any multibyte non-ASCII
+;; character
+(string< "something starting" "something ending")
+
+;; This function compares strings lexicographically, except it treats sequences of
+;; numerical characters as if they comprised a base-ten number
+(string< "abc" "ABC")
+(string-version-lessp "abc" "ABC")
+(string-version-lessp "ABC" "abc")
+
+(string-prefix-p "hey" "hey how are you?")
+(string-suffix-p "ho" "hey how are you? hoho")
+
+(string-search "myneedle" "The haystack was so big, that myneedle was all around the place!")
+(string-search "myneedle" "no needle this time")
+
+;; See also
+(describe-function 'compare-strings)
+(describe-function 'string-distance)
+(describe-function 'assoc-string)
