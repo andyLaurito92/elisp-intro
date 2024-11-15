@@ -89,3 +89,27 @@ split-string-default-separators
 (describe-function 'compare-strings)
 (describe-function 'string-distance)
 (describe-function 'assoc-string)
+
+
+;;; Convert characters and strings
+
+(describe-function 'prin1-to-string)
+
+(read-from-string "(+ 1 1)")
+
+(setq name "andy")
+(format "Hello %s" name)
+
+;; Format specifications include:
+;; %s --> string
+;; %d --> signed integer
+;; %x --> hex
+;; %f --> float
+
+
+(format-message "The name of this buffer is %s" (buffer-name))
+
+;; You can add padding to a message by adding a number after %
+(format "%9s , cool!" "hello") 
+
+(format "%5d is padded on the left with spaces" 123)
