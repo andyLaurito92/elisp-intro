@@ -143,3 +143,10 @@ split-string-default-separators
 (format-spec "%>^-3L : %3p%% (%05t left)"
 	     (cons (cons ?L "AC")	     	     
 		   my-battery-info))
+
+
+(downcase "HELLO HOW r u")
+
+(upcase "Hello how r u")
+
+(capitalize "my title looks so cool!")
