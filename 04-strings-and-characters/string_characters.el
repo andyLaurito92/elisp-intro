@@ -110,6 +110,36 @@ split-string-default-separators
 (format-message "The name of this buffer is %s" (buffer-name))
 
 ;; You can add padding to a message by adding a number after %
-(format "%9s , cool!" "hello") 
 
-(format "%5d is padded on the left with spaces" 123)
+(format-message "Buffer name was: %4s , cool!")
+
+
+;;; format-spec
+
+;;; This function allows you to define your proper template for character replacement
+
+(setq template-name "testing")
+
+(setq my-template-list
+      (list
+       (cons ?x (buffer-name))
+       (cons ?y template-name)
+       )
+  )
+
+(format-spec "The name is %x. This template is %y" my-template-list)
+
+;; More complicated example to show what the above function can do
+
+(setq my-battery-info
+      (list (cons ?p "73") ; Percentage
+	    (cons ?L "Battery") ; Status
+	    (cons ?t "2:23") ; Remaining time
+	    (cons ?c "24330") ; Capacity
+	    (cons ?r "10.6"))) ; Rate of discharge
+
+(format-spec "%>^-3L : %3p%% (%05t left)" my-battery-info)
+
+(format-spec "%>^-3L : %3p%% (%05t left)"
+	     (cons (cons ?L "AC")	     	     
+		   my-battery-info))
