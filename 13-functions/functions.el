@@ -31,4 +31,12 @@
 ;;; Emacs loads the file and then calls the proper function
 
 
+;;; A LAMBDA EXPRESSION IS A LIST that starts with symbol lambda
+;;; this indicates that the list represents a function
 
+(setq plus2 
+      (lambda (x)
+	"adds 2"
+	(+ x 2)))
+
+(funcall plus2 2)
