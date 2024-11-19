@@ -47,6 +47,7 @@
 (2+ 10)
 
 
+;; defun is just a macro. This macro eventually evaluates defalias
 (defun secondplus2 (x) (+ x 2))
 
 (secondplus2 2)
