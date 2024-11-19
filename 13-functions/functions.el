@@ -40,3 +40,8 @@
 	(+ x 2)))
 
 (funcall plus2 2)
+
+(defalias '2+ (apply-partially '+ 2)
+  "Increment argument by two")
+
+(2+ 10)
