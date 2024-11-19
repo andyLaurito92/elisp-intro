@@ -45,3 +45,8 @@
   "Increment argument by two")
 
 (2+ 10)
+
+
+(defun secondplus2 (x) (+ x 2))
+
+(secondplus2 2)
