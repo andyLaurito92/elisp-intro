@@ -150,3 +150,10 @@ split-string-default-separators
 (upcase "Hello how r u")
 
 (capitalize "my title looks so cool!")
+
+(upcase-initials "this could be in a title")
+
+
+;;; Case table
+
+(standard-case-table)
