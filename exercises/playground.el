@@ -37,3 +37,6 @@
  (file-attribute-size
   (file-attributes (buffer-file-name))
   ) "iec" "" "B")
+
+(point) ; Current position in file
+(what-line)
