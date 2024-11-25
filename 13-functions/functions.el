@@ -27,6 +27,15 @@
 ;;; 6 - Closure -> A function object like a lambda, except that it also encloses an
 ;;; environment of lexical variable bindings.
 
+;; TODO: Make this work
+(setq incn (lambda (x)
+	(closure (y) (x) (+ x y))
+     ))
+
+(setq inc3 (funcall incn 3))
+
+(funcall inc3 5)
+
 ;;; 7 - Autoload object -> A placeholder for a real function. If the autoload object is called
 ;;; Emacs loads the file and then calls the proper function
 
@@ -34,3 +43,4 @@
 ;;; A LAMBDA EXPRESSION IS A LIST that starts with symbol lambda
 ;;; this indicates that the list represents a function
 
+((lambda (x y) (+ x y)) 3 4)
