@@ -35,5 +35,30 @@
 mystack
 first-elem
 
+;;; Note: A proper list is a list whose final element is nil
+;;; in other words, the last cons cell has to have as cdr nil
 
-;;; TODO: as an exercise, implement some of the list functions :)
+(proper-list-p '(1 2 3)) ; Length of a list
+
+
+;;; Accessing elements
+
+(car '(1 2 3)) ; 1
+
+(cdr '(1 2 3)) ; '(2 3)
+
+(nth 2 '(1 2 3))
+
+(nthcdr 2 '(1 2 3 4 5)) ; Also can be seen as skip n elements and return the rest
+
+(defun mytake (n list)
+  "Implemeneting take. Recieves an integer n and
+	returns the first n elements. Nil if n is <=0"
+  (let ((res '()))
+    (dotimes (i n (reverse res)) ; Remember that (reverse res) is called at the end!
+      (setq res (cons (nth i list) res))
+     )
+   )
+)
+
+(mytake 3 '(1 2 3 4 5 6 7))
