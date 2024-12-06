@@ -60,5 +60,16 @@ first-elem
      )
    )
 )
-
 (mytake 3 '(1 2 3 4 5 6 7))
+
+(defun mybutlast (x &optional n)
+  "Returns list x with the last element, or last n elements, removed"
+  (setq n (or n 1))
+  (if (< n 0)
+      (signal 'wrong-argument-error '("Negative numbers not allowd"))
+    n)
+  (mytake (- (proper-list-p x) n) x)
+)
+
+(mybutlast '(1 2 3 4))
+(mybutlast '(1 2 3 4) 2)
