@@ -62,6 +62,8 @@ first-elem
 )
 (mytake 3 '(1 2 3 4 5 6 7))
 
+;;; We need to define the error previous to be able to use it in a condition-case
+(define-error 'wrong-argument-error "Wrong argument provided")
 (defun mybutlast (x &optional n)
   "Returns list x with the last element, or last n elements, removed"
   (setq n (or n 1))
@@ -73,3 +75,8 @@ first-elem
 
 (mybutlast '(1 2 3 4))
 (mybutlast '(1 2 3 4) 2)
+
+(condition-case err
+    (mybutlast '(1 2 3 4) -1)
+  (wrong-argument-error
+   (message "You cannot pass negative arguments!: %s" err)))
