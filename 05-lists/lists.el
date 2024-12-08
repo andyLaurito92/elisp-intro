@@ -73,6 +73,15 @@ first-elem
   (mytake (- (proper-list-p x) n) x)
 )
 
+;;; Writing tests in elisp using ert. See https://www.gnu.org/software/emacs/manual/html_node/ert/Introduction.html for more details
+;;; For running interactively the test, run M-x ert RET t RET
+
+(ert-deftest testing-mybutlast ()
+  "Tests on mybutlast implementation"
+  (should (equal (mybutlast '(1 2 3 4)) '(1 2 3)))
+  (should (equal (mybutlast '(1 2 3 4) 2) '(1 2)))
+ )
+
 (mybutlast '(1 2 3 4))
 (mybutlast '(1 2 3 4) 2)
 
