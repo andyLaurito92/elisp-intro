@@ -76,14 +76,16 @@ first-elem
 ;;; Writing tests in elisp using ert. See https://www.gnu.org/software/emacs/manual/html_node/ert/Introduction.html for more details
 ;;; For running interactively the test, run M-x ert RET t RET
 
-(ert-deftest testing-mybutlast ()
-  "Tests on mybutlast implementation"
+(ert-deftest mybutlast-when-no-integer-then-lastone-is-removed ()
+  "When no integer is passed then it defaults to last element"
   (should (equal (mybutlast '(1 2 3 4)) '(1 2 3)))
-  (should (equal (mybutlast '(1 2 3 4) 2) '(1 2)))
  )
-
-(mybutlast '(1 2 3 4))
-(mybutlast '(1 2 3 4) 2)
+(ert-deftest mybutlast-when-integer-then-nelements-removed ()
+  "When an integer N is passed then N elements are removed from the end of the list"
+  (should (equal (mybutlast '(1 2 3 4) 1) '(1 2 3)))
+  (should (equal (mybutlast '(1 2 3 4) 2) '(1 2)))
+  (should (equal (mybutlast '(1 2 3 4) 3) '(1)))
+  )
 
 (condition-case err
     (mybutlast '(1 2 3 4) -1)
