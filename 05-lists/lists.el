@@ -70,7 +70,7 @@ first-elem
   (if (< n 0)
       (signal 'wrong-argument-error '("Negative numbers not allowd"))
     n)
-  (mytake (- (proper-list-p x) n) x)
+  (mytake (- (length x) n) x)
 )
 
 ;;; Writing tests in elisp using ert. See https://www.gnu.org/software/emacs/manual/html_node/ert/Introduction.html for more details
@@ -96,3 +96,4 @@ first-elem
     (mybutlast '(1 2 3 4) -1)
   (wrong-argument-error
    (message "You cannot pass negative arguments!: %s" err)))
+
