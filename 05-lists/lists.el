@@ -86,7 +86,12 @@ first-elem
   (should (equal (mybutlast '(1 2 3 4) 2) '(1 2)))
   (should (equal (mybutlast '(1 2 3 4) 3) '(1)))
   )
+(ert-deftest mybutlast-when-negative-value-then-error-signal ()
+  "When a negative integer is passed to the function a wrong-argument-error should be thrown"
+  (should-error (mybutlast '(1 2 3 4) -1)
+		:type 'wrong-argument-error))
 
+;; How to handle case errors with condition-case
 (condition-case err
     (mybutlast '(1 2 3 4) -1)
   (wrong-argument-error
