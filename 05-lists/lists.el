@@ -112,3 +112,6 @@ first-elem
 ;; adding aobjects into a list use cons
 (append '(1) '(1 2))
 (cons 1 '(1 2))
+
+
+(apply 'append '((1 2 3) nil (a b c) nil))
