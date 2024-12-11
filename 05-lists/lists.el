@@ -97,3 +97,18 @@ first-elem
   (wrong-argument-error
    (message "You cannot pass negative arguments!: %s" err)))
 
+
+;;; We can build al ist by doing this:
+(list 1 2 3 4)
+
+;; For creating a board game, we can use make-list
+
+(setq tic-tac-toe-board
+      (make-list 3 (make-list 3 '())))
+
+
+;; Append works only for appending sequences to
+;; a list, which should be the final value. For
+;; adding aobjects into a list use cons
+(append '(1) '(1 2))
+(cons 1 '(1 2))
