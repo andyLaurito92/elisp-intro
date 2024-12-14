@@ -138,3 +138,30 @@ first-elem
 
 ;; This is valid as well in Python!
 (number-sequence 9 4 -2)
+
+(number-sequence 9)
+
+;;; iter-defun requires lexical-binding to be enabled! Internally
+;;; the generator package relies on lexical scoping to properly
+;;; manage closures for generating values
+
+(setq lexical-binding t)
+
+(iter-defun range (from &optional to separation)
+  "Yields values in the range [from, to)"
+  (let ((next from)
+	(upto (or to from))
+	(sep (or separation 1))
+	)
+    (while (< next upto)
+      (iter-yield next)
+      (setq next (+ next sep))
+      )
+    )
+  )
+
+;;; To use our function, we can do the following
+(let ((gen (range 2 8)))
+  (iter-do (next gen)
+    (print next))
+  )
