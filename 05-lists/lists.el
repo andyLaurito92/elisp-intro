@@ -115,3 +115,26 @@ first-elem
 
 
 (apply 'append '((1 2 3) nil (a b c) nil))
+
+(apply 'append '((1 2 3) nil (4 5 6) (8 9 10)))
+
+;; ensure-list object
+;; Returns object as a list
+(ensure-list 1)
+
+(dolist (elem (ensure-list 1))
+  (princ elem))
+
+;; princ -> Outputs the Printed representation of object
+(princ 1)
+
+;; number-equence --> like range in python
+;; The difference is that number-sequence doesn't
+;; yield values as in Python. Perhaps it exists
+;; another function more similar to it?
+
+(setq odd-numbers
+      (number-sequence 1 10 2))
+
+;; This is valid as well in Python!
+(number-sequence 9 4 -2)
