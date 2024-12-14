@@ -165,3 +165,29 @@ first-elem
   (iter-do (next gen)
     (print next))
   )
+
+
+;;; Modifying list variable
+
+;; push element listname
+(setq mylist '(1 2 3))
+
+;; Pushes the element as first value in the list
+;; push creates a new list with the val as first elem
+(push 1 mylist)
+
+(cons 1 mylist) ; This, on the other hand, creates a conscell and returns
+;;; 1 as car and mylist as cdr
+
+
+;;; Modifying list structure
+;; setcdr & setcar for making a list mutable
+;; Note that so far, most of elisp functions are immutable: They create new
+;; values instead of modifying the exisitng ones (which might be expensive,
+;; but gives us in return referential transparency )
+
+(setcar mylist 2)
+mylist
+
+(setcdr mylist '())
+mylist
