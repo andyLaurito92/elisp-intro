@@ -191,3 +191,11 @@ mylist
 
 (setcdr mylist '())
 mylist
+
+
+;; number-sequence from &optional to separation
+;; equivalent to range in python
+
+(setq odd-list (number-sequence 1 10 2)) ; Note that number-sequence has an eager evaluation
+
+(push 13 odd-list) ; adding an element at the beginning
