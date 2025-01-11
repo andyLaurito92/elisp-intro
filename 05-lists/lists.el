@@ -199,3 +199,12 @@ mylist
 (setq odd-list (number-sequence 1 10 2)) ; Note that number-sequence has an eager evaluation
 
 (push 13 odd-list) ; adding an element at the beginning
+
+;;; push is equivalent to macro (setq listname (cons element listname))
+
+(defun mypush (element mylist)
+       "Instead of macro defining function"
+       (setq mylist (cons element mylist))
+       )
+
+(mypush 15 odd-list)
