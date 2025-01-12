@@ -46,3 +46,15 @@ x
 
 
 ;;; In the end, you would have the same problem than in elisp!
+
+;;; Expansion of a macro call
+
+;;; When elisp evaluates a macro call, it begins like an evaluation of a function. The main
+;;; difference is that the arguemnts ARE NOT REDUCED TO THEIR VALUE, this means, that the macro
+;;; receives the EXPRESSION passed by an user instead of THE VALUES that THOSE EXPRESSIONS REPRESENTS
+
+
+;;; Question: Does the above mean that I recieve the symbols? Remember that a variable in the end is:
+;;; (setq x 3) --> x -> 3 where 3 is the value and x is the symbol and -> is the relationshipt between
+;;; variable & symbol
+
