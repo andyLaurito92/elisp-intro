@@ -58,3 +58,13 @@ x
 ;;; (setq x 3) --> x -> 3 where 3 is the value and x is the symbol and -> is the relationshipt between
 ;;; variable & symbol
 
+;;; Second key difference: a MACRO RETURNS LISPS EXPRESSION, while functions return VALUES. This lisp
+;;; expression is called the "exapnsion of the macro"
+;;; The lisp interpreter proceeds to evaluate the expansion as soon as it comes back from the macro
+
+;;; Note: The expansion of the macro might contain other calls to other macros
+
+(macroexpand '(inc x)) ; (setq x (1+ x))
+
+;;; Note: emacs tries to expand macros when loading an uncompiled Lisp file. This is not always possible, but if it is,
+;;; it speeds up subsequent executions
