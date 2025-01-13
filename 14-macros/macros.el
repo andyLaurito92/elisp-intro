@@ -68,3 +68,18 @@ x
 
 ;;; Note: emacs tries to expand macros when loading an uncompiled Lisp file. This is not always possible, but if it is,
 ;;; it speeds up subsequent executions
+
+(defmacro inc2 (var1 var2)
+  (list 'progrn
+   (list 'inc var1)
+   (list 'inc var2)
+   ))
+
+(setq y 3)
+;;; Macroexpand doesn't expand subexpressions, see the following example
+(macroexpand '(inc2 x y)) ; (progrn (inc var1) (inc var2))
+
+;;; In the above, if you want to expand inc subexpressions you need to
+;;; call macroexpand-all
+(macroexpand-all
+ '(inc2 x y)) ;; Not working as expected
