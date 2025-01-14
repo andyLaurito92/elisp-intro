@@ -83,3 +83,21 @@ x
 ;;; call macroexpand-all
 (macroexpand-all
  '(inc2 x y)) ;; Not working as expected
+
+
+;;; Macros and Byte Compilation
+
+;;; Question: Why don't we directly make the macro evaluate the lisp expression
+;;; instead of returning it so it can be evaluated by the interpreter?
+;;; Reason -> Compilation
+
+;;; When a macro call appears in a Lisp program being compiled, the Lisp
+;;; compiler calls the macro definition just as the interpreter would,
+;;; and receives an expansion. Instead of evaluatin this expansion, it
+;;; compiles the expansion as if it had appeared directly in the program!
+
+;;; ==> Compiled code produces the value and side effects intended for
+;;; the macro, but executes at full compile speed
+
+;;; In order for compilation of macro calls to work, the macros must
+;;; already be defined in Lisp when the calls to them are compiled
