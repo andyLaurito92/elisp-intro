@@ -101,3 +101,40 @@ x
 
 ;;; In order for compilation of macro calls to work, the macros must
 ;;; already be defined in Lisp when the calls to them are compiled
+
+
+;;; Defining Macros
+
+;;; A lisp macro object -> (macro lambda args . body)
+;;; This is, a list whose car is macro and whose cdr is a function
+
+;;; Exapnsion of the macro works by applying the function (with apply) to the
+;;; list of unevaluated arguments
+
+
+;;; Example of for in elisp
+(defmacro for (var from init to final do &rest body)
+  "Execute a simple \"for\" loop.
+For example, (for i from 1 to 10 do (print i))."
+  (list 'let (list (list var init))
+        (cons 'while
+              (cons (list '<= var final)
+                    (append body (list (list 'inc var)))))))
+
+(setq print 'message) ; To be more python familiar
+(print "hola")
+
+;;; Note that from to and do are syntaxis sugar but mandatory
+(for i from 1 to 3 do
+     (setq square (* i i))
+     (princ (format "\n%d %d" i square)))
+
+
+;;; If from, to and do are not receieved, an error is raised
+(for x 2 3 do
+     (message "hola"))
+
+
+;;; The above for doesn't have lexical-scoping as in other languages
+;;; Meaning that variables define in the body will be globally defined
+square
